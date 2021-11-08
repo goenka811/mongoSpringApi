@@ -29,8 +29,8 @@ public class MongoSpringApiApplication {
 					"EH12", "80 Henry Street"
 			);
 			Policy policy = new Policy(
-					"SanjRish",
-					"12345689",
+					"RishSanj",
+					"1234561",
 					"Annual",
 					address,
 					List.of("GBP", "USD", "EUR"),
