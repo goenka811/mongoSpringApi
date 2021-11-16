@@ -43,7 +43,7 @@ public class MongoSpringApiApplication {
 				System.out.println(p + " already exists");
 			}, () -> {
 				System.out.println("Inserting policy "+ policy);
-				repository.insert(policy);
+			//	repository.insert(policy);
 			});
 		};
 	}

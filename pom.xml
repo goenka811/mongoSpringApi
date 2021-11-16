@@ -16,6 +16,16 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	<repositories>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>bintray</name>
+			<url>https://jcenter.bintray.com</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -34,6 +44,34 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+    	</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.0.1-jre</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.adelean</groupId>
+			<artifactId>inject-resources-core</artifactId>
+			<version>0.1.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- For JUnit5 -->
+		<dependency>
+			<groupId>com.adelean</groupId>
+			<artifactId>inject-resources-junit-jupiter</artifactId>
+			<version>0.1.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- or for JUnit4 -->
+		<dependency>
+			<groupId>com.adelean</groupId>
+			<artifactId>inject-resources-junit-vintage</artifactId>
+			<version>0.1.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
