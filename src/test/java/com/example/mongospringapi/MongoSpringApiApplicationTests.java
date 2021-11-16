@@ -41,12 +41,7 @@ class MongoSpringApiApplicationTests {
 	String resourceContent;
 
 	@Test
-	public void greetingShouldReturnDefaultMessage() throws Exception {
-		TestJsonDocumentLoader loader = new TestJsonDocumentLoader(MongoSpringApiApplicationTests.class);
-		//String jsonData = loader.loadTestJson("allpolicyresponse.json");
-		//String someOtherExample = loader.loadTestJson("other.json");
-
-	//	String sampleInput = readFile("/resources/com.example.mongospringapi/allpolicyresponse.json", Charset.forName("UTF-8"));
+	public void jsonResponseValidationWithPreset() throws Exception {
 		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/v1/policies",
 				String.class)).contains(resourceContent);
 	}
