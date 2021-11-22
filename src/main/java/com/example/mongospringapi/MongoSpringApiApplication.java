@@ -19,7 +19,7 @@ public class MongoSpringApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MongoSpringApiApplication.class, args);
 	}
-
+/*
 	@Bean
 	CommandLineRunner runner(PolicyRepository repository, MongoTemplate mongoTemplate) {
 		return args -> {
@@ -43,10 +43,34 @@ public class MongoSpringApiApplication {
 				System.out.println(p + " already exists");
 			}, () -> {
 				System.out.println("Inserting policy "+ policy);
-				repository.insert(policy);
+		//		repository.insert(policy);
 			});
 		};
 	}
+
+ */
+@Bean
+CommandLineRunner runner(ClientRepository repository, MongoTemplate mongoTemplate) {
+	return args -> {
+
+		Client client = new Client(
+				"3456789876567",
+				"Schultz Properties",
+				"220 CCG comprehensive",
+				LocalDateTime.now(),
+				LocalDateTime.now(),
+				List.of("Expired"),
+				LocalDateTime.now());
+
+		//usingMongoTemplateAndQuery(repository, mongoTemplate, policy);
+		repository.findClientsByClientId("12345678").ifPresentOrElse( c -> {
+			System.out.println(c + " already exists");
+		}, () -> {
+			System.out.println("Inserting policy "+ client);
+			repository.insert(client);
+		});
+	};
+}
 	private void usingMongoTemplateAndQuery(PolicyRepository repository, MongoTemplate mongoTemplate, Policy policy){
 	Query query = new Query();
 			query.addCriteria(Criteria.where("policyNumber").
