@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d [%thread] %highlight(%-5level) %-60logger{60} :  %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>mongoSpringApi.log</file>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d [%thread] %highlight(%-5level) %-60logger{60} :  %msg%n</pattern>
+        </encoder>
+
+
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>mongoSpringApi-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+
+                <maxHistory>10</maxHistory>
+                <totalSizeCap>30KB</totalSizeCap>
+                <cleanHistoryOnStart>true</cleanHistoryOnStart>
+
+                <maxFileSize>3KB</maxFileSize>
+            </rollingPolicy>
+
+    </appender>
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="RollingFile" />
+    </root>
+</configuration>

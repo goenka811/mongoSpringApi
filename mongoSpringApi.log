@@ -1,0 +1,4 @@
+2021-11-22 20:37:56,374 [http-nio-8080-exec-1] [34mINFO [0;39m o.a.catalina.core.ContainerBase.[Tomcat].[localhost].[/]     :  Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-22 20:37:56,376 [http-nio-8080-exec-1] [34mINFO [0;39m org.springframework.web.servlet.DispatcherServlet            :  Initializing Servlet 'dispatcherServlet'
+2021-11-22 20:37:56,377 [http-nio-8080-exec-1] [34mINFO [0;39m org.springframework.web.servlet.DispatcherServlet            :  Completed initialization in 0 ms
+2021-11-22 20:37:56,453 [http-nio-8080-exec-1] [34mINFO [0;39m com.example.mongospringapi.ClientService                     :  Clients found successfully
