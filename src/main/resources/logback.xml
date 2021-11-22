@@ -10,7 +10,7 @@
         <file>mongoSpringApi.log</file>
 
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d [%thread] %highlight(%-5level) %-60logger{60} :  %msg%n</pattern>
+            <pattern>%d [%thread] %-5level %-60logger{60} :  %msg%n</pattern>
         </encoder>
 
 
