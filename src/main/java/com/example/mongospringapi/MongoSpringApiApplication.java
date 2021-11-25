@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -50,47 +51,70 @@ public class MongoSpringApiApplication {
 
  */
 @Bean
-CommandLineRunner runner(ClientRepository repository, MongoTemplate mongoTemplate) {
+CommandLineRunner runner(GcmsRepository repository, MongoTemplate mongoTemplate) {
 	return args -> {
 
-		Client client = new Client(
-				"3456789876567",
-				"Schultz Properties",
+	/*	Client client = new Client(
+				"BDS BHP 298",
+				"Festivals Insurance Alliance",
 				"220 CCG comprehensive",
 				LocalDateTime.now(),
 				LocalDateTime.now(),
-				List.of("Expired"),
-				LocalDateTime.now());
+				List.of("In progress"),
+				LocalDateTime.now(),
+				"Expleo Tech",
+				"", "", "", "");
 
 		//usingMongoTemplateAndQuery(repository, mongoTemplate, policy);
-		repository.findClientsByClientId("12345678").ifPresentOrElse( c -> {
+		repository.findClientsByGcmsId("12345678").ifPresentOrElse( c -> {
 			System.out.println(c + " already exists");
 		}, () -> {
 			System.out.println("Inserting policy "+ client);
 			repository.insert(client);
 		});
+*/
+
+		Gcms gcms = new Gcms("AUS",
+				"Australia",
+				"ISI",
+				"Interstate Steamship Insurances Pty Ltd (USD)",
+				"Single Parent Captive",
+				"Mining, Metals & Minerals",
+				"0000",
+				"Interstate Steamship Insurances Pty Ltd (USD)"
+				);
+
+		//usingMongoTemplateAndQuery(repository, mongoTemplate, gcms);
+		//System.out.println("Inserting gcms "+ gcms);
+		//repository.insert(gcms);
+		repository.findGcmsByDomicileCodeAndCompanyCode("AUS", "ISI").ifPresentOrElse( g -> {
+			System.out.println(g + " already exists");
+		}, () -> {
+			System.out.println("Inserting gcms "+ gcms);
+			repository.insert(gcms);
+		});
 	};
 }
-	private void usingMongoTemplateAndQuery(PolicyRepository repository, MongoTemplate mongoTemplate, Policy policy){
-	Query query = new Query();
-			query.addCriteria(Criteria.where("policyNumber").
+	private void usingMongoTemplateAndQuery(GcmsRepository repository, MongoTemplate mongoTemplate, Gcms gcms){
+	//Query query = new Query();
+	//		query.addCriteria(Criteria.where("DomicileCode").
 
-	is("12345678"));
-	List<Policy> policies = mongoTemplate.find(query, Policy.class);
-			if(policies.size()>1)
+	//is("12345678"));
+	List<Gcms> gcms1 = new ArrayList<>();//mongoTemplate.find(query, Gcms.class);
+			if(gcms1.size()>1)
 
 	{
 		throw new IllegalStateException("Error document found with id" + "12345");
 	}
-			if(policies.isEmpty())
+			if(gcms1.isEmpty())
 
 	{
 		System.out.println("Inserting row:");
-		repository.insert(policy);
+		repository.insert(gcms);
 	}else
 
 	{
-		System.out.println("Problem inserting row:" + policy);
+		System.out.println("Problem inserting row:" + gcms);
 	}
 }
 }
