@@ -1,5 +1,7 @@
 package com.example.mongospringapi;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,34 +11,35 @@ import java.util.List;
 
 @Data
 @Document
+@JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
 public class GcmsUser {
     @Id
     private String id;
 
     public GcmsUser(String domicileCode, String domicile, String companyCode, String companyName, String office, String userCode, String name, String eMail, String domicileCompanyRole, String domicileRole, String domicileJob) {
-        DomicileCode = domicileCode;
-        Domicile = domicile;
-        CompanyCode = companyCode;
-        CompanyName = companyName;
-        Office = office;
-        UserCode = userCode;
-        Name = name;
+        this.domicileCode = domicileCode;
+        this.domicile = domicile;
+        this.companyCode = companyCode;
+        this.companyName = companyName;
+        this.office = office;
+        this.userCode = userCode;
+        this.name = name;
         this.eMail = eMail;
-        DomicileCompanyRole = domicileCompanyRole;
-        DomicileRole = domicileRole;
-        DomicileJob = domicileJob;
+        this.domicileCompanyRole = domicileCompanyRole;
+        this.domicileRole = domicileRole;
+        this.domicileJob = domicileJob;
     }
 
-    private String DomicileCode;
-    private String Domicile;
-    private String CompanyCode;
-    private String CompanyName;
-    private String Office;
-    private String UserCode;
-    private String Name;
+    private String domicileCode;
+    private String domicile;
+    private String companyCode;
+    private String companyName;
+    private String office;
+    private String userCode;
+    private String name;
     private String eMail;
-    private String DomicileCompanyRole;
-    private String DomicileRole;
-    private String DomicileJob;
+    private String domicileCompanyRole;
+    private String domicileRole;
+    private String domicileJob;
 
 }

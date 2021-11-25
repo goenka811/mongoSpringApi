@@ -51,7 +51,7 @@ public class MongoSpringApiApplication {
 
  */
 @Bean
-CommandLineRunner runner(GcmsRepository repository, MongoTemplate mongoTemplate) {
+CommandLineRunner runner(GcmsUserRepository repository, MongoTemplate mongoTemplate) {
 	return args -> {
 
 	/*	Client client = new Client(
@@ -73,7 +73,7 @@ CommandLineRunner runner(GcmsRepository repository, MongoTemplate mongoTemplate)
 			repository.insert(client);
 		});
 */
-
+/*
 		Gcms gcms = new Gcms("AUS",
 				"Australia",
 				"ISI",
@@ -92,6 +92,24 @@ CommandLineRunner runner(GcmsRepository repository, MongoTemplate mongoTemplate)
 		}, () -> {
 			System.out.println("Inserting gcms "+ gcms);
 			repository.insert(gcms);
+		});
+*/
+
+		GcmsUser gcmsuser = new GcmsUser("VER",
+				"Vermont", "DMG",
+				"DMG Insurance Company, Inc.","Malta",
+				"BM02P01\\DEE","Eve, DeonE.",
+				"Deon.Eve@marsh.com", "", "", "System Support        "
+		);
+
+		//usingMongoTemplateAndQuery(repository, mongoTemplate, gcms);
+		//System.out.println("Inserting gcms "+ gcms);
+		//repository.insert(gcms);
+		repository.findGcmsUserByDomicileCodeAndCompanyCode("AUS", "ISI").ifPresentOrElse( g -> {
+			System.out.println(g + " already exists");
+		}, () -> {
+			System.out.println("Inserting gcms "+ gcmsuser);
+			repository.insert(gcmsuser);
 		});
 	};
 }
