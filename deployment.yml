@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongospringapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mongospringapi
+  template:
+    metadata:
+      labels:
+        app: mongospringapi
+    spec:
+      containers:
+      - name: mongospringapi
+        image: goenka811/mongospringapi-415127018
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
